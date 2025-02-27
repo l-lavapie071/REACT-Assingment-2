@@ -3,13 +3,15 @@ import { useState } from "react";
 import viteLogo from "/vite.svg"; */
 import Header from "./components/Header";
 import SeachBox from "./components/SearchBox";
-import "./App.css";
+import DisplayRecipes from "./components/DisplayRecipes";
 
 function App() {
+  const [array, setArray] = useState([]);
   return (
     <>
       <Header />
-      <SeachBox />
+      <SeachBox setArray={setArray} />
+      <DisplayRecipes array={array} />
     </>
   );
 }

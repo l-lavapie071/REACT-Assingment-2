@@ -1,37 +1,38 @@
 import React, { useState } from "react";
 
-const TextBox = () => {
-  const [inputText, setInputText] = useState("");
+const TextBox = ({ setArray }) => {
+  const [tempText, setTempText] = useState("");
 
-  const handleChange = (e) => {
-    setInputText(e.target.value);
+  const handleInputChange = (e) => {
+    setTempText(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    const array = tempText.split(",").map((item) => item.trim());
+    setArray(array);
   };
 
   return (
     <div>
-      {/* <input
-        type="text"
-        value={inputText}
-        onChange={handleChange}
-        placeholder="Enter text here"
-      /> */}
       <div className="input-group mb-3">
         <input
           type="text"
           className="form-control"
-          placeholder="Enter text here"
-          aria-label="Enter text here"
+          placeholder="Enter text separated by commas"
+          aria-label="Enter text separated by commas"
           aria-describedby="basic-addon2"
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">
-            Seach
+        <div className="input-group-append">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={handleButtonClick}
+          >
+            Search
           </button>
         </div>
       </div>
-
-      <p>You entered: {inputText}</p>
     </div>
   );
 };
