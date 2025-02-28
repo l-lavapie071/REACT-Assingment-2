@@ -3,19 +3,19 @@ import React from "react";
 const Header = () => {
   return (
     <>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link " href="#">
+      <ul className="nav justify-content-center">
+        <li className="nav-item">
+          <a className="nav-link " href="#">
             Home
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <a className="nav-link" href="#">
             Search
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <a className="nav-link" href="#">
             Profile
           </a>
         </li>

@@ -6,12 +6,12 @@ import SeachBox from "./components/SearchBox";
 import DisplayRecipes from "./components/DisplayRecipes";
 
 function App() {
-  const [array, setArray] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   return (
     <>
       <Header />
-      <SeachBox setArray={setArray} />
-      <DisplayRecipes array={array} />
+      <SeachBox setRecipes={setRecipes} />
+      <DisplayRecipes recipes={recipes} />
     </>
   );
 }

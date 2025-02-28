@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { fetchRecipes } from "../assets/api";
 
-const TextBox = ({ setArray }) => {
+const TextBox = ({ setRecipes }) => {
   const [tempText, setTempText] = useState("");
 
   const handleInputChange = (e) => {
     setTempText(e.target.value);
   };
 
-  const handleButtonClick = () => {
-    const array = tempText.split(",").map((item) => item.trim());
-    setArray(array);
+  const handleButtonClick = async () => {
+    const recipes = await fetchRecipes(
+      tempText,
+      "67a057f0478d4c5b8b732c3c5a627c6a"
+    );
+    setRecipes(recipes);
   };
 
   return (
@@ -18,8 +22,8 @@ const TextBox = ({ setArray }) => {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter text separated by commas"
-          aria-label="Enter text separated by commas"
+          placeholder="Enter ingredients separated by commas"
+          aria-label="Enter ingredients separated by commas"
           aria-describedby="basic-addon2"
           onChange={handleInputChange}
         />
