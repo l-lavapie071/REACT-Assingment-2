@@ -1,17 +1,37 @@
 import { useState } from "react";
-/* import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg"; */
 import Header from "./components/Header";
-import SeachBox from "./components/SearchBox";
+import SearchBox from "./components/SearchBox";
 import DisplayRecipes from "./components/DisplayRecipes";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [dietaryRestriction, setDietaryRestriction] = useState("");
+
+  const filterRecipes = (recipes, restriction) => {
+    if (!restriction) return recipes;
+    return recipes.filter((recipe) =>
+      recipe.diets.includes(restriction.toLowerCase())
+    );
+  };
+
+  const filteredRecipes = filterRecipes(recipes, dietaryRestriction);
+
   return (
     <>
       <Header />
-      <SeachBox setRecipes={setRecipes} />
-      <DisplayRecipes recipes={recipes} />
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-12">
+            <SearchBox
+              setRecipes={setRecipes}
+              setDietaryRestriction={setDietaryRestriction}
+            />
+          </div>
+          <div className="col-12">
+            <DisplayRecipes recipes={filteredRecipes} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
